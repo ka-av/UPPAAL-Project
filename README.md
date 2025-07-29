@@ -8,6 +8,7 @@ scholarship.
 5. Assuming that one can view student/user personal information on clicking the corresponding option since we haven't learnt to display some output on UPPAAL.
    
 Description: 
+
 The model has three templates as our system namely Student, Portal and Academic server. The user actively interacts with the website in order to apply for a merit
 scholarship or merit-cum-need scholarship. Conditions for a merit scholarship includes a CGPA greater than or equal to 9.0 and subsequently the merit-cum-need scholarship includes a CGPA greater than or equal to 7.0 . The model checks whether the user has enough CGPA to apply for a scholarship or not, if he has the cut off CGPA then the user gets to apply for a scholarship. First, the website asks the student to login in with his/her credentials. If the credentials are approved then the student is allowed to continue to the portal’s homepage, if rejected then they are redirected to the login page. Once the credentials are approved the student will get four options on the homepage: 
 a. Apply for a scholarship 

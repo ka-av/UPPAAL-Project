@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+chan login, authfail, authsuccess, applyForScholarship, getTranscript, viewinfo, logout;
+chan app_accepted, app_rejected, home, back, back1;
+chan merit, meritcumneed,morethanequal9, lessthan9,morethanequal7, lessthan7;
+bool apply = true;
+bool decision;
+bool authsucc;</declaration>
+	<template>
+		<name x="5" y="5">Student</name>
+		<declaration>// Place local declarations here.
+</declaration>
+		<location id="id0" x="-544" y="85">
+			<name x="-569" y="102">Start</name>
+		</location>
+		<location id="id1" x="-374" y="85">
+			<name x="-391" y="102">SignIn</name>
+		</location>
+		<location id="id2" x="-144" y="85">
+			<name x="-161" y="102">Home</name>
+		</location>
+		<location id="id3" x="68" y="34">
+			<name x="58" y="0">Fetch_Transcript</name>
+		</location>
+		<location id="id4" x="76" y="187">
+			<name x="66" y="153">View_Info</name>
+		</location>
+		<location id="id5" x="161" y="-119">
+			<name x="178" y="-136">scholarship</name>
+		</location>
+		<location id="id6" x="60" y="-255">
+			<name x="77" y="-264">m</name>
+		</location>
+		<location id="id7" x="238" y="-255">
+			<name x="263" y="-272">mcn</name>
+		</location>
+		<location id="id8" x="153" y="-374">
+		</location>
+		<location id="id9" x="272" y="-374">
+		</location>
+		<location id="id10" x="-59" y="-374">
+		</location>
+		<location id="id11" x="26" y="-374">
+		</location>
+		<init ref="id0"/>
+		<transition id="id12">
+			<source ref="id9"/>
+			<target ref="id2"/>
+		</transition>
+		<transition id="id13">
+			<source ref="id8"/>
+			<target ref="id2"/>
+		</transition>
+		<transition id="id14">
+			<source ref="id11"/>
+			<target ref="id2"/>
+		</transition>
+		<transition id="id15">
+			<source ref="id10"/>
+			<target ref="id2"/>
+		</transition>
+		<transition id="id16">
+			<source ref="id6"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-59" y="-323">lessthan9!</label>
+		</transition>
+		<transition id="id17">
+			<source ref="id7"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="171" y="-331">lessthan7!</label>
+		</transition>
+		<transition id="id18">
+			<source ref="id6"/>
+			<target ref="id11"/>
+			<label kind="synchronisation" x="0" y="-348">morethanequal9!</label>
+			<nail x="51" y="-281"/>
+		</transition>
+		<transition id="id19">
+			<source ref="id7"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="255" y="-331">morethanequal7!</label>
+		</transition>
+		<transition id="id20">
+			<source ref="id5"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="179" y="-204">meritcumneed!</label>
+		</transition>
+		<transition id="id21">
+			<source ref="id5"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="78" y="-204">merit!</label>
+		</transition>
+		<transition id="id22">
+			<source ref="id4"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="136" y="263">back!</label>
+			<nail x="170" y="221"/>
+			<nail x="102" y="297"/>
+		</transition>
+		<transition id="id23">
+			<source ref="id3"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="221" y="51">back!</label>
+			<nail x="212" y="34"/>
+			<nail x="212" y="93"/>
+		</transition>
+		<transition id="id24">
+			<source ref="id2"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-212" y="0">applyForScholarship!</label>
+		</transition>
+		<transition id="id25">
+			<source ref="id2"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-442" y="238">logout!</label>
+			<nail x="-136" y="263"/>
+			<nail x="-646" y="263"/>
+			<nail x="-646" y="85"/>
+		</transition>
+		<transition id="id26">
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-493" y="-17">authfail!</label>
+			<nail x="-323" y="8"/>
+			<nail x="-561" y="8"/>
+		</transition>
+		<transition id="id27">
+			<source ref="id2"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-59" y="102">viewinfo!</label>
+		</transition>
+		<transition id="id28">
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-17" y="51">getTranscript!</label>
+		</transition>
+		<transition id="id29">
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-306" y="59">authsuccess!</label>
+		</transition>
+		<transition id="id30">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-493" y="68">login!</label>
+		</transition>
+	</template>
+	<template>
+		<name>Portal</name>
+		<location id="id31" x="-76" y="-612">
+			<name x="-102" y="-646">Start</name>
+		</location>
+		<location id="id32" x="-76" y="-501">
+			<name x="-59" y="-510">Authenticating</name>
+		</location>
+		<location id="id33" x="-76" y="-391">
+			<name x="-59" y="-416">Homepage</name>
+		</location>
+		<location id="id34" x="-501" y="-399">
+			<name x="-654" y="-433">ApplyForScholarship</name>
+		</location>
+		<location id="id35" x="-306" y="-204">
+			<name x="-417" y="-238">FetchTranscript</name>
+		</location>
+		<location id="id36" x="178" y="-255">
+			<name x="168" y="-289">ViewDetails</name>
+		</location>
+		<location id="id37" x="-306" y="34">
+			<name x="-400" y="25">accepted</name>
+			<committed/>
+		</location>
+		<location id="id38" x="-76" y="-34">
+			<name x="-161" y="-42">rejected</name>
+			<committed/>
+		</location>
+		<location id="id39" x="-850" y="-348">
+			<name x="-860" y="-382">m</name>
+		</location>
+		<location id="id40" x="-612" y="-314">
+			<name x="-622" y="-348">mcn</name>
+		</location>
+		<location id="id41" x="-909" y="-204">
+			<name x="-935" y="-187">soham</name>
+		</location>
+		<location id="id42" x="-807" y="-204">
+			<name x="-833" y="-187">kaavya</name>
+		</location>
+		<location id="id43" x="-680" y="-204">
+			<name x="-714" y="-187">vanishka</name>
+		</location>
+		<location id="id44" x="-544" y="-204">
+			<name x="-569" y="-187">rohan</name>
+		</location>
+		<init ref="id31"/>
+		<transition id="id45">
+			<source ref="id41"/>
+			<target ref="id33"/>
+		</transition>
+		<transition id="id46">
+			<source ref="id42"/>
+			<target ref="id33"/>
+		</transition>
+		<transition id="id47">
+			<source ref="id43"/>
+			<target ref="id33"/>
+		</transition>
+		<transition id="id48">
+			<source ref="id44"/>
+			<target ref="id33"/>
+		</transition>
+		<transition id="id49">
+			<source ref="id40"/>
+			<target ref="id43"/>
+			<label kind="synchronisation" x="-688" y="-297">morethanequal7?</label>
+			<label kind="assignment" x="-705" y="-246">decision=true</label>
+		</transition>
+		<transition id="id50">
+			<source ref="id39"/>
+			<target ref="id42"/>
+			<label kind="synchronisation" x="-833" y="-314">lessthan9?</label>
+			<label kind="assignment" x="-833" y="-297">decision=false</label>
+		</transition>
+		<transition id="id51">
+			<source ref="id39"/>
+			<target ref="id41"/>
+			<label kind="synchronisation" x="-1003" y="-314">morethanequal9?</label>
+			<label kind="assignment" x="-1003" y="-297">decision=true</label>
+		</transition>
+		<transition id="id52">
+			<source ref="id34"/>
+			<target ref="id40"/>
+			<label kind="synchronisation" x="-561" y="-348">meritcumneed?</label>
+		</transition>
+		<transition id="id53">
+			<source ref="id34"/>
+			<target ref="id39"/>
+			<label kind="synchronisation" x="-765" y="-391">merit?</label>
+		</transition>
+		<transition id="id54">
+			<source ref="id35"/>
+			<target ref="id33"/>
+			<label kind="synchronisation" x="-178" y="-195">back?</label>
+			<nail x="-119" y="-187"/>
+		</transition>
+		<transition id="id55">
+			<source ref="id38"/>
+			<target ref="id33"/>
+			<label kind="synchronisation" x="-59" y="-195">app_rejected?</label>
+		</transition>
+		<transition id="id56">
+			<source ref="id37"/>
+			<target ref="id33"/>
+			<label kind="synchronisation" x="-25" y="-51">app_accepted?</label>
+			<nail x="0" y="35"/>
+		</transition>
+		<transition id="id57">
+			<source ref="id35"/>
+			<target ref="id38"/>
+			<label kind="guard" x="-238" y="-127">decision==false</label>
+		</transition>
+		<transition id="id58">
+			<source ref="id35"/>
+			<target ref="id37"/>
+			<label kind="guard" x="-357" y="-85">decision==true</label>
+		</transition>
+		<transition id="id59">
+			<source ref="id36"/>
+			<target ref="id33"/>
+			<label kind="synchronisation" x="-8" y="-297">back?</label>
+			<nail x="-25" y="-314"/>
+		</transition>
+		<transition id="id60">
+			<source ref="id40"/>
+			<target ref="id44"/>
+			<label kind="synchronisation" x="-594" y="-276">lessthan7?</label>
+			<label kind="assignment" x="-594" y="-259">decision=false</label>
+		</transition>
+		<transition id="id61">
+			<source ref="id33"/>
+			<target ref="id31"/>
+			<label kind="synchronisation" x="136" y="-416">logout?</label>
+			<label kind="assignment" x="136" y="-391">apply=true</label>
+			<nail x="365" y="-391"/>
+			<nail x="365" y="-391"/>
+		</transition>
+		<transition id="id62">
+			<source ref="id33"/>
+			<target ref="id36"/>
+			<label kind="synchronisation" x="51" y="-340">viewinfo?</label>
+		</transition>
+		<transition id="id63">
+			<source ref="id33"/>
+			<target ref="id35"/>
+			<label kind="synchronisation" x="-263" y="-297">getTranscript?</label>
+		</transition>
+		<transition id="id64">
+			<source ref="id33"/>
+			<target ref="id34"/>
+			<label kind="guard" x="-467" y="-425">apply==true</label>
+			<label kind="synchronisation" x="-340" y="-416">applyForScholarship?</label>
+			<label kind="assignment" x="-467" y="-399">apply=false</label>
+		</transition>
+		<transition id="id65">
+			<source ref="id32"/>
+			<target ref="id31"/>
+			<label kind="synchronisation" x="-170" y="-552">authfail?</label>
+			<label kind="assignment" x="-323" y="-552">authsucc=false</label>
+			<nail x="-195" y="-535"/>
+		</transition>
+		<transition id="id66">
+			<source ref="id32"/>
+			<target ref="id33"/>
+			<label kind="synchronisation" x="-68" y="-467">authsuccess?</label>
+			<label kind="assignment" x="-68" y="-450">authsucc=true</label>
+		</transition>
+		<transition id="id67">
+			<source ref="id31"/>
+			<target ref="id32"/>
+			<label kind="synchronisation" x="-68" y="-569">login?</label>
+		</transition>
+	</template>
+	<template>
+		<name>AcademicServer</name>
+		<location id="id68" x="-1003" y="-68">
+			<name x="-1054" y="-102">application</name>
+		</location>
+		<location id="id69" x="-1292" y="-68">
+			<name x="-1462" y="-85">waitforapplication</name>
+		</location>
+		<init ref="id68"/>
+		<transition id="id70">
+			<source ref="id68"/>
+			<target ref="id69"/>
+			<label kind="synchronisation" x="-722" y="-93">home!</label>
+			<nail x="-561" y="-68"/>
+			<nail x="-561" y="195"/>
+			<nail x="-1292" y="195"/>
+		</transition>
+		<transition id="id71">
+			<source ref="id68"/>
+			<target ref="id69"/>
+			<label kind="guard" x="-1011" y="93">decision==false</label>
+			<label kind="synchronisation" x="-1003" y="68">app_rejected!</label>
+			<nail x="-824" y="59"/>
+			<nail x="-1113" y="59"/>
+		</transition>
+		<transition id="id72">
+			<source ref="id68"/>
+			<target ref="id69"/>
+			<label kind="guard" x="-1037" y="-246">decision==true</label>
+			<label kind="synchronisation" x="-1020" y="-221">app_accepted!</label>
+			<nail x="-816" y="-195"/>
+			<nail x="-1113" y="-195"/>
+		</transition>
+		<transition id="id73">
+			<source ref="id69"/>
+			<target ref="id68"/>
+			<label kind="synchronisation" x="-1215" y="-93">getTranscript!</label>
+		</transition>
+	</template>
+	<system>// List one or more processes to be composed into a system.
+system Student,Portal,AcademicServer;
+</system>
+	<queries>
+		<query>
+			<formula>A[] not deadlock </formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-11-30 12:05:33 +0530">
+			</result>
+		</query>
+		<query>
+			<formula>E&lt;&gt; Student.Fetch_Transcript </formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-11-30 12:05:15 +0530">
+			</result>
+		</query>
+		<query>
+			<formula>E&lt;&gt; Portal.ApplyForScholarship imply Student.SignIn &amp;&amp; 
+!(Student.scholarship) </formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-11-30 13:03:54 +0530">
+			</result>
+		</query>
+		<query>
+			<formula>A[] Portal.Homepage imply !Portal.m &amp;&amp; !Portal.mcn </formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-11-30 13:04:15 +0530">
+			</result>
+		</query>
+		<query>
+			<formula>A[] !(Portal.Homepage &amp;&amp; !authsucc) 
+</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-11-30 13:03:56 +0530">
+			</result>
+		</query>
+	</queries>
+</nta>
